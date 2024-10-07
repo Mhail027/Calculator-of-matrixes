@@ -1,0 +1,84 @@
+// Copyright Necula Mihail 313CAa 2023-2024
+
+Matricile vor fi salvate într-un tablou tridimenional, căruia îi dăm numele w.
+Astfel w[i] va pointa către matricea cu numărul i.
+Numărul de elemente ale lui w va fi salvat într-o variabilă, cu numele cnt.
+Dimensiunile tablourilor bidimensionale vor fi salvate într-o matrice, pe care
+o botezăm a. Aceasta va respecta urmatoarele reguli:
+	a[0][i] = numarul de linii ale matricei cu numarul i,
+	a[1][i] = numarul de coloane ale matricei cu numarul i.
+
+Pentru a citi și a realiza comenzile vom folosi un do...while, intrucât știm că
+va exista cel puțin una. Toate literele, înafară de cea dintâi, vor fi
+precedate de caracterul invizibil '/n'. Astfel, trebuie să citim două caractere
+pentru a ajunge la următoarea comandă, după ce am realizat una.
+
+Pentru a realiza corespondența dintre litera citită și acțiunea pe care
+calculatorul trebuie să o facă ne vom folosi de un switch...case.
+
+Din faptul că în urma unei operații matemtice(+, -, *, /), rezultatul trebuie
+să fie modulo 10^4+7 și dacă rezulatul este negativ, după ce facem asta,
+trebuie să adunăm la el 10^4+7, reiese următoarea regulă:
+	a operție b = ((a operție b) % 10^4+7 + 10^4+7) % 10^4+7.
+
+L (Încărcarea unei matrici în memorie)
+cnt crește cu unu.
+Dacă cnt este egal cu unu, inseamnă ca a și w sunt egale cu NULL. Alocăm
+dinamic memoria necesară pentru a și citim dimensiunile matricei pe care o vom
+primi, dimensiuni pe care le salvam in a. După, la fel, alocăm memorie pentru w
+și salvăm la w[cnt - 1] matricea pe care o citim.
+În caz contrar, dacă cnt este diferit de unu, facem același proces. Singura
+diferență este că nu mai alocăm, ci reacolăm memorie.
+
+D (Determinarea dimensiunilor unei matrici)
+Dacă există o matrice cu indicele cerut, ne vom folosi de tabloul bidimensional
+a pentru îi afișa dimensiunile.
+
+P (Afișarea unnei matrici)
+Dacă există o matrice cu indicele cerut, ne vom folosi de tabloul
+tridimensional w pentru a o printa pe ecran.
+
+C (Redimenionarea unei matrici)
+Dacă există o matrice cu indicele cerut, pentru început, copiem din ea linile a
+căror indice este transmis prin tastatură înt-o nouă matrice. Acestui tablou
+bidimenional îi vom încredința numele l,care reprezintă o prescurteare de la
+lines. Ulterior, copiem din l coloanele care ni se cer, într-o matrice
+diferită. Aceasta va fi denumită lc, de la lines-columns, și va fi rezultatul
+acestei comenzi.
+
+M (Înmulțirea a două matrice)
+Dacă cele două matrici există și sunt compatibile, le vom înmulți și vom salva
+rezultatul la sfârșitul tabloului tridimenisonal.
+
+S (Sortarea matricilor)
+Determinăm suma elementelor fiecărei matrici și salvăm valorile obținute
+într-un vector. În timp ce îl sortăm prin selecție pe acesta, vom sorta
+și matricile. Dacă interschimbăm elementele i și j din vectorul de sume,
+facem același lucru și în vectorul de matrici. De asemenea, în momentul
+în care schimbăm matricile între ele, trebuie să facem asta și cu coloanele
+matricii dimensiunilor.
+
+T (Transpunerea unei matrici)
+Dacă matricea exită, liniile devin coloane și coloanele devin linii.
+Nu putem face asta direct, asa ca o ne folosim de o matrice auxiliara.
+
+R (Ridicarea unei matrici la o putere în timp logaritmic)
+În cazul în care matricea există și este pătratică, ne vom folosi de
+următoarle observații pentru a o ridica la putere în mod eficient:
+	A^0 = I,
+	A^1 = A,
+	A^p = A^(p / 2) * A^(p / 2), dacă p est epar,
+	A^p = A^((p - 1) / 2) * A^((p - 1) / 2) * A, dacă p este impar.
+
+F (Eliberarea memorie unei matrici)
+Nu este nimic de explicat.
+
+S (Înmulțirea matricilor folosind algoritmul lui Strassen)
+Pentru a lucra eficient din punct de vedere al memoriei, vom salva toate
+tablourile bidimensionale auxiliare care sunt create pe parcursul calculării
+matricilor necesare acestui algoritm. După ce obținem rezulatul final, vom
+elibera resursele care le-au fost alocate.
+
+Q (Eliberarea tuturor resurselor)
+Nu este nimic de explicat.
+
